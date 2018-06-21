@@ -1,3 +1,4 @@
+
 // Create a list of questions
 var myQuestions = [{
         question: "1. What is soccer International Championship games called?",
@@ -55,9 +56,57 @@ var myQuestions = [{
     }
 ];
 
+$(document).ready(function () {
+
+ // Click Start button to display the questions
+function startGame(){
+
+    $("#start").on("click", function(){
+                       
+        for(i = 0; i < myQuestions.length; i++);
+
+        $("#questions").append('<div>'+ myQuestions[0].question +'</div>');
+        $("#questions").append('<div>'+ myQuestions[1].question +'</div>');
+        $("#questions").append('<div>'+ myQuestions[2].question +'</div>');
+        $("#questions").append('<div>'+ myQuestions[3].question +'</div>');
+        $("#questions").append('<div>'+ myQuestions[4].question +'</div>');
 
 
-$("#start").click(function () {
-    $("p").append("<h2>1. what is required of you to wear to play in on organized game of soccer?</h2>",
-        "<p><ul><li>sentence</li></ul></p>");
+
+        
+        
+        // console.log("-----" + myQuestions[0].question);
+
+    });
+}
+ 
+
+// $("#questions").append('<p> </p>'+ myQuestions[0].question);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+startGame();
+
 });
+
+
+
