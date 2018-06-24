@@ -1,87 +1,137 @@
-
-// Create a list of questions
-var myQuestions = [{
-        question: "1. What is soccer International Championship games called?",
-        answers: {
-            a: 'World Series',
-            b: 'FIFA',
-            c: 'Super Bowl',
-            d: 'World Cup'
-        },
-        correctAnswer: 'd'
-    },
-
-    {
-        question: "2. what is required of you to wear to play in on organized game of soccer?",
-        answers: {
-            a: 'Helmet',
-            b: 'Shinguards',
-            c: 'Shoulder Pads',
-            d: 'Gloves'
-        },
-        correctAnswer: 'b'
-    },
-
-    {
-        question: "3. How is a soccer game started?",
-        answers: {
-            a: 'Punt',
-            b: 'First Pitch',
-            c: 'Throw In',
-            d: 'Kickoff'
-        },
-        correctAnswer: 'd'
-    },
-
-    {
-        question: "4. What size ball is considered full size?",
-        answers: {
-            a: '5',
-            b: '10',
-            c: '1',
-            d: '3'
-        },
-        correctAnswer: '5'
-    },
-
-    {
-        question: "5. When will an improper throw-in be called?",
-        answers: {
-            a: 'If you jump',
-            b: 'If you throw the ball over your head',
-            c: 'If you use both hands to throw the ball',
-            d: 'If you stand on the line'
-        },
-        correctAnswer: 'a'
-    }
-];
-
 $(document).ready(function () {
+        var questions = [{
+            "question": "1. What is soccer International Championship games called?",
+            "answer": "World Cup",
+            "choiceOne": "World Series",
+            "choiceTwo": "FIFA",
+            "choiceThree": "Super Bowl",
+            "choiceFour": "World Cup",
+            "userGuess": [],
+        },
+        {
+            "question": "2. What is required of you to wear to play in on organized game of soccer?",
+            "answer": "Shinguards",
+            "choiceOne": "Helmet",
+            "choiceTwo": "Shinguards",
+            "choiceThree": "Shoulder Pads",
+            "choiceFour": "Gloves",
+            "userGuess": [],
+        },
+        {
+            "question": "3. How is a soccer game started?",
+            "answer": "Kickoff",
+            "choiceOne": "Punt",
+            "choiceTwo": "First Pitch",
+            "choiceThree": "Throw In",
+            "choiceFour": "Kickoff",
+            "userGuess": [],
+        },
+        {
+            "question": "4. What size ball is considered full size?",
+            "answer": "5",
+            "choiceOne": "5",
+            "choiceTwo": "10",
+            "choiceThree": "1",
+            "choiceFour": "3",
+            "userGuess": [],
+        },
+        {
+            "question": "5. When will an improper throw-in be called?",
+            "answer": "If you jump",
+            "choiceOne": "If you jump",
+            "choiceTwo": "If you throw the ball over you head",
+            "choiceThree": "If you use both hands to throw the ball",
+            "choiceFour": "If you stand on the line",
+            "userGuess": [],
+        }
 
- // Click Start button to display the questions
-function startGame(){
 
-    $("#start").on("click", function(){
-                       
-        for(i = 0; i < myQuestions.length; i++);
+    ]
+    var intervalId;
+    console.log("-------" + questions[3].answer);
+    console.log("-------" + questions[4].answer);
 
-        $("#questions").append('<div>'+ myQuestions[0].question +'</div>');
-        $("#questions").append('<div>'+ myQuestions[1].question +'</div>');
-        $("#questions").append('<div>'+ myQuestions[2].question +'</div>');
-        $("#questions").append('<div>'+ myQuestions[3].question +'</div>');
-        $("#questions").append('<div>'+ myQuestions[4].question +'</div>');
+    function startGame() {
+
+        $("#start").on("click"),function () {
+            var newDiv = $('#questions');
+                for (i = 0; i < questions.length; i++) {
+                  
+                    $("#questions").append('<label>' + '<input type="radio" name="question'+i+'value+');
+                   $("#questions").append('<div>' + questions[i].question + '</div>');
+
+                }
+                
+        }
+        console.log("&&&&&&" + questions[1].question);
+    }
+// Diplay questions to the page
+
+    function gamePlay() {
+        $("#start").on('click', function() {
+            
+            $("button").remove("#start");
+           
+
+            $("#questions").append(questions[0].question + ": " +"<ul> <input type=radio name = radio1 checkstate = true> " + questions[0].choiceOne +","+"<input type=radio name = radio1 checkstate = false>" + questions[0].choiceTwo +"," +"<input type=radio name = radio1 checkstate = false>" + questions[0].choiceThree +"," + "<input type=radio name = radio1 checkstate = false>" + questions[0].choiceFour +"</ul>"+"<br>");
+            $("#questions").append(questions[1].question + ": " + "<ul> <input type=radio name = radio2 checkstate = false>" + questions[1].choiceOne +"," + "<input type=radio name = radio2 checkstate = false>" +questions[1].choiceTwo +"," + "<input type=radio name = radio2 checkstate = false>" +  questions[0].choiceThree +"," + "<input type=radio name = radio2 checkstate = false>" + questions[1].choiceFour +"</ul>"+"<br>");
+            $("#questions").append(questions[2].question + ": " + " <ul> <input type=radio name = radio3 checkstate = false>" + questions[2].choiceOne +","+ "<input type=radio name = radio3 checkstate = false>" + questions[2].choiceTwo +"," + "<input type=radio name = radio3 checkstate = false>" + questions[2].choiceThree +","+ "<input type=radio name = radio3 checkstate = false>" + questions[2].choiceFour + "</ul>"+ "<br>");
+            $("#questions").append(questions[3].question + ": " + " <ul><input type=radio name = radio4 checkstate = false>" + questions[3].choiceOne +","+ "<input type=radio name = radio4 checkstate = false>" + questions[3].choiceTwo +","+ "<input type=radio name = radio4 checkstate = false>" + questions[3].choiceThree +","+ "<input type=radio name = radio4 checkstate = false>" + questions[3].choiceFour +"</ul>"+ "<br>");
+            $("#questions").append(questions[4].question + ": " + " <ul> <input type=radio name = radio5 checkstate = false>" + questions[4].choiceOne +","+ "<input type=radio name = radio5 checkstate = false>" + questions[4].choiceTwo +","+ "<input type=radio name = radio5 checkstate = false>" + questions[4].choiceThree +","+ "<input type=radio name = radio5 checkstate = false>" + questions[4].choiceFour + "</ul>"+ "<br>");
+
+        startClock();
+          
+        });
+    }
+// Display Score
+    function getResults(){
+
+        $("#submit").on('click', function(){
+
+            $("#questions").remove();
+            $("#display").remove();
+            $('#results').text("You scored 5 out of 5" );
+        })
 
 
+    }
 
+    // counter
+        setInterval(startClock, 1000 );
+    function startClock(){
+      $("#display").append(time)
+        time--;
         
-        
-        // console.log("-----" + myQuestions[0].question);
+    }
+    
+   
+    function timeConverter(t) {
 
-    });
-}
- 
+        var minutes = Math.floor(t / 60);
+        var seconds = t - (minutes * 60);
+      
+        if (seconds < 10) {
+          seconds = "0" + seconds;
+        }
+      
+        if (minutes === 0) {
+          minutes = "00";
+        }
+        else if (minutes < 10) {
+          minutes = "0" + minutes;
+        }
+      
+        return minutes + ":" + seconds;
+      }
+      function count() {
 
-// $("#questions").append('<p> </p>'+ myQuestions[0].question);
+        time++;
+        var converted = timeConverter(time);
+        $("#display").text(converted);
+      
+      }
+   
+   
 
 
 
@@ -89,24 +139,8 @@ function startGame(){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-startGame();
-
+    startGame();
+    gamePlay(); 
+    getResults();
 });
-
-
 
