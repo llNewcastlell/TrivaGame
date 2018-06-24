@@ -48,23 +48,8 @@ $(document).ready(function () {
 
     ]
     var intervalId;
-    console.log("-------" + questions[3].answer);
-    console.log("-------" + questions[4].answer);
-
-    function startGame() {
-
-        $("#start").on("click"),function () {
-            var newDiv = $('#questions');
-                for (i = 0; i < questions.length; i++) {
-                  
-                    $("#questions").append('<label>' + '<input type="radio" name="question'+i+'value+');
-                   $("#questions").append('<div>' + questions[i].question + '</div>');
-
-                }
-                
-        }
-        console.log("&&&&&&" + questions[1].question);
-    }
+    var time = 60;
+  
 // Diplay questions to the page
 
     function gamePlay() {
@@ -79,7 +64,7 @@ $(document).ready(function () {
             $("#questions").append(questions[3].question + ": " + " <ul><input type=radio name = radio4 checkstate = false>" + questions[3].choiceOne +","+ "<input type=radio name = radio4 checkstate = false>" + questions[3].choiceTwo +","+ "<input type=radio name = radio4 checkstate = false>" + questions[3].choiceThree +","+ "<input type=radio name = radio4 checkstate = false>" + questions[3].choiceFour +"</ul>"+ "<br>");
             $("#questions").append(questions[4].question + ": " + " <ul> <input type=radio name = radio5 checkstate = false>" + questions[4].choiceOne +","+ "<input type=radio name = radio5 checkstate = false>" + questions[4].choiceTwo +","+ "<input type=radio name = radio5 checkstate = false>" + questions[4].choiceThree +","+ "<input type=radio name = radio5 checkstate = false>" + questions[4].choiceFour + "</ul>"+ "<br>");
 
-        startClock();
+        // startClock();
           
         });
     }
@@ -97,12 +82,28 @@ $(document).ready(function () {
     }
 
     // counter
-        setInterval(startClock, 1000 );
-    function startClock(){
-      $("#display").append(time)
-        time--;
+
+    var counter = {
+
+        time: 60,
+
+
+        count: function(){
+            counter.time--;
+            console.log(time);
+            $("#display").text(time);
+        }
         
     }
+        setInterval(function(){
+            // console.log("=======" + time);
+            time --;
+        });
+    // function startClock(){
+    //   $("#display").append(time)
+    //     time--;
+        
+    // }
     
    
     function timeConverter(t) {
@@ -139,7 +140,7 @@ $(document).ready(function () {
 
 
 
-    startGame();
+    // startGame();
     gamePlay(); 
     getResults();
 });
