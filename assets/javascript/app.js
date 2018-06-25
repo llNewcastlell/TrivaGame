@@ -134,6 +134,7 @@ $(document).ready(function () {
             // setTimeout(time);
 
             console.log(time);
+            console.log(runTimer);
 
 
 
