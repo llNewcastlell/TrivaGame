@@ -48,7 +48,7 @@ $(document).ready(function () {
 
     ]
     
-    var time = 5;
+    var time = 60;
     var correctAnswer;
     var wrongAnswer;
     var userSelected;
@@ -73,6 +73,7 @@ $(document).ready(function () {
          runTimer();
          decrement();
          stop();
+         setTimeout();
         // startClock();
           
         });
@@ -140,8 +141,9 @@ $(document).ready(function () {
     
     }
 
-    function stop(){
-     setTimeout(time);
+    function setTimeout(runTimer)
+    {
+     
 
     }
   
