@@ -48,40 +48,13 @@ $(document).ready(function () {
 
     ]
     
-    var time = 60;
+    var time = 5;
     var correctAnswer;
     var wrongAnswer;
     var userSelected;
   
 
-    // for (i =0; i , questions.length; i++ ){
-
-    //         if(questions[i].question < 5);
-    //         $("#q1").append(questions[0].question + "<q2>");
-    //         $("#q2").append(questions[1].question);
-    //         $("#q3").append(questions[2].question);
-    //         $("#q4").append(questions[3].question);
-    //         $("#q5").append(questions[4].question);
-    //         $("#a1").append("<input type=radio name = radio1 checkstate = true> " + questions[0].choiceOne,  ": " +" <input type=radio name = radio1 checkstate = true> " + questions[0].choiceTwo + "<input type=radio name = radio1 checkstate = true> " + questions[0].choiceThree +  "<input type=radio name = radio1 checkstate = true> " + questions[0].choiceFour);
-            
-    //         $("#a2").append("<input type=radio name = radio1 checkstate = true> " + questions[1].choiceOne,  ": " +" <input type=radio name = radio1 checkstate = true> " + questions[1].choiceTwo + "<input type=radio name = radio1 checkstate = true> " + questions[1].choiceThree +  "<input type=radio name = radio1 checkstate = true> " + questions[1].choiceFour);
-
-    //         $("#a3").append("<input type=radio name = radio1 checkstate = true> " + questions[2].choiceOne,  ": " +" <input type=radio name = radio1 checkstate = true> " + questions[2].choiceTwo + "<input type=radio name = radio1 checkstate = true> " + questions[2].choiceThree +  "<input type=radio name = radio1 checkstate = true> " + questions[2].choiceFour);
-
-    //         $("#a4").append("<input type=radio name = radio1 checkstate = true> " + questions[3].choiceOne,  ": " +" <input type=radio name = radio1 checkstate = true> " + questions[3].choiceTwo + "<input type=radio name = radio1 checkstate = true> " + questions[3].choiceThree +  "<input type=radio name = radio1 checkstate = true> " + questions[3].choiceFour);
-
-    //         $("#a5").append("<input type=radio name = radio1 checkstate = true> " + questions[4].choiceOne,  ": " +" <input type=radio name = radio1 checkstate = true> " + questions[4].choiceTwo + "<input type=radio name = radio1 checkstate = true> " + questions[4].choiceThree +  "<input type=radio name = radio1 checkstate = true> " + questions[4].choiceFour);
-
-
-
-            
-
-            // console.log(question);
-
-            
-            
-            // document.write(questions[i].question);
-    // }
+    
 // Diplay questions to the page
 
     function gamePlay() {
@@ -97,7 +70,9 @@ $(document).ready(function () {
             $("#q5").append(questions[4].question + ": " + " <ul> <input type=radio name = radio5 checkstate = false>" + questions[4].choiceOne +","+ "<input type=radio name = radio5 checkstate = false>" + questions[4].choiceTwo +","+ "<input type=radio name = radio5 checkstate = false>" + questions[4].choiceThree +","+ "<input type=radio name = radio5 checkstate = false>" + questions[4].choiceFour + "</ul>"+ "<br>");
 
 
-            startTimer();
+         runTimer();
+         decrement();
+         stop();
         // startClock();
           
         });
@@ -105,9 +80,17 @@ $(document).ready(function () {
 
 //          Check answer
     // ***********************************************
-    
+    function score (){
+    correctAnswer = questions[i].answer;
 
+    if (userSelected == correctAnswer){
 
+        $("#results").text(correctAnswer);
+        
+
+    }
+    }
+   
 
 
 
@@ -129,63 +112,39 @@ $(document).ready(function () {
 
     }
 
-    function startTimer(){
-        time = setInterval( 1000)
-        console.log(startTimer);
+    function runTimer() {
+
+        var intervalId = 60;
+        clearInterval(time);
+        intervalId = setInterval(decrement, 1000);
+        $("#display").append(time, 1000);
+        console.log(time);
+     
+    }
+    
+    function decrement() {
+        time--;
+        $("#display").text( ":"+ time);
+
+        //  If number gets to zero...
+        if (time === 0) {
+            stop(runTimer);
+           
+            // setTimeout(time);
+
+            console.log(time);
+
+
+
+        }
+    
     }
 
-    // counter
+    function stop(){
+     setTimeout(time);
 
-    // var counter = {
-
-    //     time: 60,
-
-
-    //     count: function(){
-    //         counter.time--;
-    //         console.log(time);
-    //         $("#display").text(time);
-    //     }
-        
-    // }
-    //     setInterval(function(){
-    //         // console.log("=======" + time);
-    //         time --;
-    //     });
-    // // function startClock(){
-    // //   $("#display").append(time)
-    // //     time--;
-        
-    // // }
-    
-   
-    // function timeConverter(t) {
-
-    //     var minutes = Math.floor(t / 60);
-    //     var seconds = t - (minutes * 60);
-      
-    //     if (seconds < 10) {
-    //       seconds = "0" + seconds;
-    //     }
-      
-    //     if (minutes === 0) {
-    //       minutes = "00";
-    //     }
-    //     else if (minutes < 10) {
-    //       minutes = "0" + minutes;
-    //     }
-      
-    //     return minutes + ":" + seconds;
-    //   }
-    //   function count() {
-
-    //     time++;
-    //     var converted = timeConverter(time);
-    //     $("#display").text(converted);
-      
-    //   }
-   
-   
+    }
+  
 
 
 
